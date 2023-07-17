@@ -8,17 +8,16 @@ Docker 版本 23.0.5，构建版本 bc4487a
 示例
 克隆存储库
 
-$ git clone https://github.com/yamada-ai/VoiceVox-SadTalker.git
-CopyCopy
+$ git clone https://github.com/yqty/VoiceVox-SadTalker.git
+
 使用 docker-compose 进行构建和启动
 
 $ docker-compose build && docker-compose up
-CopyCopy
+
 服务器启动后，执行以下示例命令
 
 $ curl -X POST  -H "Content-Type: application/json"  -d '{"text":"这是一个测试。", "speaker_id":1, "image_id":1}' localhost:8080/create/video/
-CopyCopy
-https://github.com/yamada-ai/VoiceVox-SadTalker/assets/24557368/e064f5e9-bf67-4ac0-ba5a-26c95760dd14
+
 
 注意事项
 videoServer/dockerfile 使用 nvidia/cuda:11.7.0-base-ubuntu22.04 作为基础环境进行搭建。由于执行环境可能不适用于某些计算机，请在出现问题时先检查一下。
