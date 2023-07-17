@@ -16,18 +16,17 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
+
 app.add_middleware(
-    CORSMiddleware,
-    # allow_origins=["http://localhost:5173"],  # 許可するフロントエンドのオリジン
-    allow_origins=["*"],
-    # allow_origin_regex=r"^https://example-(.+)\.com$",  # 追加で許可するフロントエンドのオリジンの正規表現
-    allow_credentials=True,  # 資格情報の共有の可否
-    allow_methods=["*"],  # 許可するHTTPリクエストメソッド
-    allow_headers=["*"],  # フロントエンドからの認可するHTTPヘッダー情報
-    expose_headers=["Example-Header"],  # フロントエンドがアクセスできるHTTPヘッダー情報
+    CORSMiddleware, 
+    # allow_origins=["http://localhost:5173"], # 允许的前端来源 
+    allow_origins=["*"], 
+    # allow_origin_regex=r"^https://example-(.+).com$", # 允许的额外前端来源正则表达式 
+    allow_credentials=True, # 共享凭证信息的可行性 
+    allow_methods=["*"], # 允许的HTTP请求方法 
+    allow_headers=["*"], # 允许从前端授权的HTTP头信息 
+    expose_headers=["Example-Header"], # 前端可以访问的HTTP头信息 )
 )
-
-
 
 import uuid
 import json
