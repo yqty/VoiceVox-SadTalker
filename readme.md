@@ -1,42 +1,28 @@
-# Voicevox-SadTalker
-## 概要
-- 文字列，話者id, 画像id を送信すると，画像内の顔にリップシンクした動画が生成される．
+Voicevox-SadTalker
+概要
+当输入文本、话者ID和图像ID后，会生成一个与图像中人脸进行唇部同步的视频。
+运行环境
+Windows 11
+WSL2 Ubuntu 20.04 LTS
+Docker 版本 23.0.5，构建版本 bc4487a
+示例
+克隆存储库
 
+$ git clone https://github.com/yamada-ai/VoiceVox-SadTalker.git
+CopyCopy
+使用 docker-compose 进行构建和启动
 
-## 動作環境
-- windows 11
-- wsl2 ubuntu 20.04 LTS
-- Docker version 23.0.5, build bc4487a
+$ docker-compose build && docker-compose up
+CopyCopy
+服务器启动后，执行以下示例命令
 
-## 実行例
-
-1. git clone する
-
-    ```sh
-    $ git clone https://github.com/yamada-ai/VoiceVox-SadTalker.git
-    ```
-
-1. docker-compose で build, up する
-
-    ```sh
-    $ docker-compose build && docker-compose up
-    ```
-
-1. サーバが立ち上がるので，例として以下を実行
-    
-    ```sh
-    $ curl -X POST  -H "Content-Type: application/json"  -d '{"text":"これはテストです", "speaker_id":1, "image_id":1}' localhost:8080/create/video/
-    ```
-    
-
-
+$ curl -X POST  -H "Content-Type: application/json"  -d '{"text":"これはテストです", "speaker_id":1, "image_id":1}' localhost:8080/create/video/
+CopyCopy
 https://github.com/yamada-ai/VoiceVox-SadTalker/assets/24557368/e064f5e9-bf67-4ac0-ba5a-26c95760dd14
 
-    
+注意事项
+videoServer/dockerfile 使用 nvidia/cuda:11.7.0-base-ubuntu22.04 作为基础环境进行搭建。由于执行环境可能不适用于某些计算机，请在出现问题时先检查一下。
 
-## 注意事項
-- videoServer/dockerfile では，nvidia/cuda:11.7.0-base-ubuntu22.04をベースにして環境構築をしている．実行するPCの環境によっては不適切になる可能性があるため，動かない場合は一度チェックして欲しい
-    - 参考
-        - https://hub.docker.com/r/nvidia/cuda
-
-- メモリ10GBくらい持っていくので注意
+参考
+https://hub.docker.com/r/nvidia/cuda
+注意需要大约10GB的内存。
